@@ -26,6 +26,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <objc/runtime.h>
 
 #define OEGlobalEventsKey @"OEGlobalEventsKey"
 

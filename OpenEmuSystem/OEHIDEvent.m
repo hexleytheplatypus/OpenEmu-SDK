@@ -24,12 +24,10 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <objc/runtime.h>
 #import "OEHIDEvent.h"
 #import "OEDeviceHandler.h"
 #import "OEDeviceManager.h"
 #import <IOKit/hid/IOHIDUsageTables.h>
-#import <Carbon/Carbon.h>
 #import "OEHIDUsageToVK.h"
 #import "OEHIDDeviceHandler.h"
 #import "OEWiimoteHIDDeviceHandler.h"

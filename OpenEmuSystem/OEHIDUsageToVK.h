@@ -26,7 +26,10 @@
  */
 
 #import <Carbon/Carbon.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <Foundation/Foundation.h>
 #import <IOKit/hid/IOHIDUsageTables.h>
+#import <OpenEmuBase/OpenEmuBase.h>
 
 typedef struct
 {

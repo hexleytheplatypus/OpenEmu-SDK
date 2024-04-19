@@ -6,8 +6,8 @@
 //
 //
 
-#import <OpenEmuSystem/OpenEmuSystem.h>
 #import <OpenEmuBase/OEPropertyList.h>
+#import <OpenEmuSystem/OpenEmuSystem.h>
 #import <IOKit/hid/IOHIDLib.h>
 
 @class OEDeviceHandler, OEHIDDeviceHandler, OEWiimoteHIDDeviceHandler;

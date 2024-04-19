@@ -24,6 +24,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+@import OpenEmuBase;
+
 #import "OEEvent.h"
 
 static NSString *const OEEventLocationXKey = @"OEEventLocationX";

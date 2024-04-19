@@ -24,6 +24,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import AppKit;
+@import Foundation;
+
 #import "NSResponder+OEHIDAdditions.h"
 #import "OEHIDEvent.h"
 
