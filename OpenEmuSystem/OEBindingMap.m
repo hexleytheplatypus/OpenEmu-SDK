@@ -24,85 +24,87 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
+
 #import "OEBindingMap.h"
 #import "OEKeyBindingDescription.h"
-#import "OESystemController.h"
-#import "OEHIDEvent_Internal.h"
-
-@interface OEBindingMap ()
-{
-    NSMutableDictionary *_keyMap;
-    dispatch_queue_t     _queue;
-}
-
-@end
-
-static Boolean _OEBindingMapKeyEqualCallBack(OEHIDEvent *value1, OEHIDEvent *value2)
-{
-    return [value1 isBindingEqualToEvent:value2];
-}
-
-static CFHashCode _OEBindingMapKeyHashCallBack(OEHIDEvent *value)
-{
-    return [value bindingHash];
-}
-
-@implementation OEBindingMap
-
-- (instancetype)init
-{
-    if((self = [super init]))
-    {
-        CFDictionaryKeyCallBacks keyCallbacks = {
-            .retain          = kCFTypeDictionaryKeyCallBacks.retain,
-            .release         = kCFTypeDictionaryKeyCallBacks.release,
-            .copyDescription = kCFTypeDictionaryKeyCallBacks.copyDescription,
-            .equal           = (CFDictionaryEqualCallBack)_OEBindingMapKeyEqualCallBack,
-            .hash            = (CFDictionaryHashCallBack) _OEBindingMapKeyHashCallBack
-        };
-
-        _keyMap = (__bridge_transfer NSMutableDictionary *)CFDictionaryCreateMutable(NULL, 0, &keyCallbacks, &kCFTypeDictionaryValueCallBacks);
-        _queue  = dispatch_queue_create("org.openemu.OEBindingMap.queue", DISPATCH_QUEUE_CONCURRENT);
-    }
-
-    return self;
-}
-
-- (OESystemKey *)systemKeyForEvent:(OEHIDEvent *)anEvent;
-{
-    __block OESystemKey *ret = nil;
-    dispatch_sync(_queue, ^{
-        ret = [self->_keyMap objectForKey:anEvent];
-    });
-
-    return ret;
-}
-
-- (void)setSystemKey:(OESystemKey *)aKey forEvent:(OEHIDEvent *)anEvent;
-{
-    dispatch_barrier_async(_queue, ^{
-        [self->_keyMap setObject:aKey forKey:anEvent];
-    });
-}
-
-- (void)removeSystemKeyForEvent:(OEHIDEvent *)anEvent
-{
-    dispatch_barrier_async(_queue, ^{
-        [self->_keyMap removeObjectForKey:anEvent];
-    });
-}
-
-- (NSString *)description
-{
-    __block NSString *keyMapDescription = [_keyMap description];
-    dispatch_sync(_queue, ^{
-        keyMapDescription = [self->_keyMap description];
-    });
-
-    return [NSString stringWithFormat:@"<%@ %p events: %@>", [self class], self, keyMapDescription];
-}
-
-@end
+//#import "OESystemController.h"
+//#import "OEHIDEvent_Internal.h"
+//
+//@interface OEBindingMap ()
+//{
+//    NSMutableDictionary *_keyMap;
+//    dispatch_queue_t     _queue;
+//}
+//
+//@end
+//
+//static Boolean _OEBindingMapKeyEqualCallBack(OEHIDEvent *value1, OEHIDEvent *value2)
+//{
+//    return [value1 isBindingEqualToEvent:value2];
+//}
+//
+//static CFHashCode _OEBindingMapKeyHashCallBack(OEHIDEvent *value)
+//{
+//    return [value bindingHash];
+//}
+//
+//@implementation OEBindingMap
+//
+//- (instancetype)init
+//{
+//    if((self = [super init]))
+//    {
+//        CFDictionaryKeyCallBacks keyCallbacks = {
+//            .retain          = kCFTypeDictionaryKeyCallBacks.retain,
+//            .release         = kCFTypeDictionaryKeyCallBacks.release,
+//            .copyDescription = kCFTypeDictionaryKeyCallBacks.copyDescription,
+//            .equal           = (CFDictionaryEqualCallBack)_OEBindingMapKeyEqualCallBack,
+//            .hash            = (CFDictionaryHashCallBack) _OEBindingMapKeyHashCallBack
+//        };
+//
+//        _keyMap = (__bridge_transfer NSMutableDictionary *)CFDictionaryCreateMutable(NULL, 0, &keyCallbacks, &kCFTypeDictionaryValueCallBacks);
+//        _queue  = dispatch_queue_create("org.openemu.OEBindingMap.queue", DISPATCH_QUEUE_CONCURRENT);
+//    }
+//
+//    return self;
+//}
+//
+//- (OESystemKey *)systemKeyForEvent:(OEHIDEvent *)anEvent;
+//{
+//    __block OESystemKey *ret = nil;
+//    dispatch_sync(_queue, ^{
+//        ret = [self->_keyMap objectForKey:anEvent];
+//    });
+//
+//    return ret;
+//}
+//
+//- (void)setSystemKey:(OESystemKey *)aKey forEvent:(OEHIDEvent *)anEvent;
+//{
+//    dispatch_barrier_async(_queue, ^{
+//        [self->_keyMap setObject:aKey forKey:anEvent];
+//    });
+//}
+//
+//- (void)removeSystemKeyForEvent:(OEHIDEvent *)anEvent
+//{
+//    dispatch_barrier_async(_queue, ^{
+//        [self->_keyMap removeObjectForKey:anEvent];
+//    });
+//}
+//
+//- (NSString *)description
+//{
+//    __block NSString *keyMapDescription = [_keyMap description];
+//    dispatch_sync(_queue, ^{
+//        keyMapDescription = [self->_keyMap description];
+//    });
+//
+//    return [NSString stringWithFormat:@"<%@ %p events: %@>", [self class], self, keyMapDescription];
+//}
+//
+//@end
 
 @implementation OESystemKey
 

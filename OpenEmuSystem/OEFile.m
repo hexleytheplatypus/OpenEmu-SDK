@@ -6,6 +6,8 @@
 //
 //
 
+@import Foundation;
+
 #import "OEFile.h"
 
 @implementation OEFile {

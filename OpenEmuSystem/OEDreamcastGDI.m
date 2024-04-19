@@ -24,6 +24,8 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+
 #import "OEDreamcastGDI.h"
 
 #import "OEDiscDescriptor_Internal.h"

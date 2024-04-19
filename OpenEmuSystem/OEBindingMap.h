@@ -26,17 +26,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class OEHIDEvent;
+//@class OEHIDEvent;
 @class OESystemKey;
-@class OESystemController;
-
-@interface OEBindingMap : NSObject
-
-- (OESystemKey *)systemKeyForEvent:(OEHIDEvent *)anEvent;
-- (void)setSystemKey:(OESystemKey *)aKey forEvent:(OEHIDEvent *)anEvent;
-- (void)removeSystemKeyForEvent:(OEHIDEvent *)anEvent;
-
-@end
+//@class OESystemController;
+//
+//@interface OEBindingMap : NSObject
+//
+//- (OESystemKey *)systemKeyForEvent:(OEHIDEvent *)anEvent;
+//- (void)setSystemKey:(OESystemKey *)aKey forEvent:(OEHIDEvent *)anEvent;
+//- (void)removeSystemKeyForEvent:(OEHIDEvent *)anEvent;
+//
+//@end
 
 @interface OESystemKey : NSObject
 + (instancetype)systemKeyWithKey:(NSUInteger)aKeyNumber player:(NSUInteger)playerNumber isAnalogic:(BOOL)isAnalogic;
