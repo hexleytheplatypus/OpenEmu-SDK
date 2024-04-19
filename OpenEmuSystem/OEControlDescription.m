@@ -24,6 +24,8 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+
 #import "OEControlDescription.h"
 #import "OEControllerDescription_Internal.h"
 #import "OEHIDEvent.h"

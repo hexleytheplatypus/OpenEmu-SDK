@@ -24,8 +24,6 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-
 #import <OpenEmuSystem/OEHIDEvent.h>
 
 NS_ASSUME_NONNULL_BEGIN

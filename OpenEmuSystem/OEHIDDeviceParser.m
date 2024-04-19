@@ -24,9 +24,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "OEHIDDeviceParser.h"
+@import OpenEmuBase;
 
-#import "NSDictionary+OpenEmuSDK.h"
+#import "OEHIDDeviceParser.h"
 #import "OEControllerDescription.h"
 #import "OEControlDescription.h"
 #import "OEControlDescription.h"

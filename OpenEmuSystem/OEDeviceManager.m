@@ -24,6 +24,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+@import ObjectiveC;
+
 #import "OEDeviceManager.h"
 #import "OEDeviceManager_Internal.h"
 #import "OEDeviceHandler.h"
@@ -36,8 +39,6 @@
 #import "OEXBox360HIDDeviceHander.h"
 #import "OETouchbarHIDDeviceHandler.h"
 #import "OEHIDEvent_Internal.h"
-
-#import <objc/runtime.h>
 
 #import <IOBluetooth/IOBluetooth.h>
 #import <IOBluetooth/objc/IOBluetoothDeviceInquiry.h>
