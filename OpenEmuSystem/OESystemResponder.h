@@ -24,84 +24,105 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <TargetConditionals.h>
+#import <Foundation/Foundation.h>
+#import <OpenEmuBase/OpenEmuBase.h>
+
+#import <OpenEmuSystem/OEBindingMap.h>
+//#import <OpenEmuSystem/OEKeyBindingDescription.h>
+//#import <OpenEmuSystem/OESystemBindings.h>
+//
+//NS_ASSUME_NONNULL_BEGIN
+//
+//@class    OEEvent;
+//@class    OESystemController;
+//@protocol OESystemResponderClient;
+//@protocol OEGlobalEventsHandler;
+//
+//#if TARGET_OS_OSX
+//@interface OESystemResponder : NSResponder
+//#elif TARGET_OS_IOS
+//@interface OESystemResponder : UIResponder
+//#endif
+//
+//- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)initWithController:(OESystemController *)controller NS_DESIGNATED_INITIALIZER;
+//
+//@property(strong, readonly) OESystemController *controller;
+//@property(weak, nonatomic) id<OESystemResponderClient> client;
+//@property(weak, nonatomic) id<OEGlobalEventsHandler> globalEventsHandler;
+//
+//- (void)handleMouseEvent:(OEEvent *)event;
+//
+//@property(nonatomic, strong) OEBindingMap *keyMap;
+//
+//- (OESystemKey *)emulatorKeyForKey:(OEKeyBindingDescription *)aKey player:(NSUInteger)thePlayer;
+//
+//- (void)pressEmulatorKey:(OESystemKey *)aKey;
+//- (void)releaseEmulatorKey:(OESystemKey *)aKey;
+//- (void)mouseDownAtPoint:(OEIntPoint)aPoint;
+//- (void)mouseUpAtPoint;
+//- (void)rightMouseDownAtPoint:(OEIntPoint)aPoint;
+//- (void)rightMouseUpAtPoint;
+//- (void)mouseMovedAtPoint:(OEIntPoint)aPoint;
+//- (void)changeAnalogEmulatorKey:(OESystemKey *)aKey value:(CGFloat)value;
+//
+//- (void)systemBindingsDidSetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
+//- (void)systemBindingsDidUnsetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
+//
+//@end
+//
+//// Methods that subclasses must override
+//@interface OESystemResponder (OEGameSystemResponderSubclass)
+//+ (Protocol *)gameSystemResponderClientProtocol;
+//@end
+//
+//@protocol OEGlobalEventsHandler <NSObject>
+//- (void)saveState:(id)sender;
+//- (void)loadState:(id)sender;
+//- (void)quickSave:(id)sender;
+//- (void)quickLoad:(id)sender;
+//- (void)toggleFullScreen:(id)sender;
+//- (void)toggleAudioMute:(id)sender;
+//- (void)volumeDown:(id)sender;
+//- (void)volumeUp:(id)sender;
+//- (void)stopEmulation:(id)sender;
+//- (void)resetEmulation:(id)sender;
+//- (void)toggleEmulationPaused:(id)sender;
+//- (void)takeScreenshot:(id)sender;
+//- (void)fastForwardGameplay:(BOOL)enable;
+//- (void)rewindGameplay:(BOOL)enable;
+//- (void)stepGameplayFrameForward:(id)sender;
+//- (void)stepGameplayFrameBackward:(id)sender;
+//- (void)nextDisplayMode:(id)sender;
+//- (void)lastDisplayMode:(id)sender;
+//@end
+//
+//NS_ASSUME_NONNULL_END
+
 
 #if TARGET_OS_OSX
-#import <Cocoa/Cocoa.h>
-#elif TARGET_OS_IOS
-#import <UIKit/UIKit.h>
-#else
-#error "Unsupported platform"
+#import <AppKit/AppKit.h>
+#elif TARGET_OS_IPHONE
+    #if TARGET_OS_WATCH
+    #import <WatchKit/WatchKit.h>
+    #else
+    #import <UIKit/UIKit.h>
+    #endif
 #endif
-#import <OpenEmuBase/OEGameCore.h>
-#import <OpenEmuSystem/OEBindingMap.h>
-#import <OpenEmuSystem/OEKeyBindingDescription.h>
-#import <OpenEmuSystem/OESystemBindings.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@class    OEEvent;
-@class    OESystemController;
-@protocol OESystemResponderClient;
-@protocol OEGlobalEventsHandler;
 
 #if TARGET_OS_OSX
 @interface OESystemResponder : NSResponder
-#elif TARGET_OS_IOS
-@interface OESystemResponder : UIResponder
+#elif TARGET_OS_IPHONE
+    #if TARGET_OS_WATCH
+    @interface OESystemResponder : NSObject
+    #else
+    @interface OESystemResponder : UIResponder
+    #endif
 #endif
 
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithController:(OESystemController *)controller NS_DESIGNATED_INITIALIZER;
-
-@property(strong, readonly) OESystemController *controller;
 @property(weak, nonatomic) id<OESystemResponderClient> client;
-@property(weak, nonatomic) id<OEGlobalEventsHandler> globalEventsHandler;
-
-- (void)handleMouseEvent:(OEEvent *)event;
-
-@property(nonatomic, strong) OEBindingMap *keyMap;
-
-- (OESystemKey *)emulatorKeyForKey:(OEKeyBindingDescription *)aKey player:(NSUInteger)thePlayer;
 
 - (void)pressEmulatorKey:(OESystemKey *)aKey;
 - (void)releaseEmulatorKey:(OESystemKey *)aKey;
-- (void)mouseDownAtPoint:(OEIntPoint)aPoint;
-- (void)mouseUpAtPoint;
-- (void)rightMouseDownAtPoint:(OEIntPoint)aPoint;
-- (void)rightMouseUpAtPoint;
-- (void)mouseMovedAtPoint:(OEIntPoint)aPoint;
-- (void)changeAnalogEmulatorKey:(OESystemKey *)aKey value:(CGFloat)value;
-
-- (void)systemBindingsDidSetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
-- (void)systemBindingsDidUnsetEvent:(OEHIDEvent *)event forBinding:(__kindof OEBindingDescription *)bindingDescription playerNumber:(NSUInteger)playerNumber;
 
 @end
-
-// Methods that subclasses must override
-@interface OESystemResponder (OEGameSystemResponderSubclass)
-+ (Protocol *)gameSystemResponderClientProtocol;
-@end
-
-@protocol OEGlobalEventsHandler <NSObject>
-- (void)saveState:(id)sender;
-- (void)loadState:(id)sender;
-- (void)quickSave:(id)sender;
-- (void)quickLoad:(id)sender;
-- (void)toggleFullScreen:(id)sender;
-- (void)toggleAudioMute:(id)sender;
-- (void)volumeDown:(id)sender;
-- (void)volumeUp:(id)sender;
-- (void)stopEmulation:(id)sender;
-- (void)resetEmulation:(id)sender;
-- (void)toggleEmulationPaused:(id)sender;
-- (void)takeScreenshot:(id)sender;
-- (void)fastForwardGameplay:(BOOL)enable;
-- (void)rewindGameplay:(BOOL)enable;
-- (void)stepGameplayFrameForward:(id)sender;
-- (void)stepGameplayFrameBackward:(id)sender;
-- (void)nextDisplayMode:(id)sender;
-- (void)lastDisplayMode:(id)sender;
-@end
-
-NS_ASSUME_NONNULL_END

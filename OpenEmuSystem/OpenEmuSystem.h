@@ -24,34 +24,28 @@
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#import <Foundation/Foundation.h>
 
-#if TARGET_OS_OSX
-#import <Cocoa/Cocoa.h>
-#import <Carbon/Carbon.h>
-#import <ForceFeedback/ForceFeedback.h>
-#import <IOKit/hid/IOHIDLib.h>
-#import <IOKit/hid/IOHIDUsageTables.h>
-#endif
-
-#import <OpenEmuSystem/NSResponder+OEHIDAdditions.h>
+//#import <IOKit/hid/IOHIDLib.h>
+//#import <IOKit/hid/IOHIDUsageTables.h>
+//
+//#import <OpenEmuSystem/NSResponder+OEHIDAdditions.h>
 #import <OpenEmuSystem/OEBindingMap.h>
-#import <OpenEmuSystem/OEBindingsController.h>
-#import <OpenEmuSystem/OEDiscDescriptor.h>
-#import <OpenEmuSystem/OECUESheet.h>
-#import <OpenEmuSystem/OECloneCD.h>
-#import <OpenEmuSystem/OEControlDescription.h>
-#import <OpenEmuSystem/OEControllerDescription.h>
-#import <OpenEmuSystem/OEDeviceDescription.h>
-#import <OpenEmuSystem/OEDeviceHandler.h>
-#import <OpenEmuSystem/OEDeviceManager.h>
-#import <OpenEmuSystem/OEDreamcastGDI.h>
-#import <OpenEmuSystem/OEEvent.h>
-#import <OpenEmuSystem/OEFile.h>
-#import <OpenEmuSystem/OEHIDEvent.h>
+//#import <OpenEmuSystem/OEBindingsController.h>
+//#import <OpenEmuSystem/OEDiscDescriptor.h>
+//#import <OpenEmuSystem/OECUESheet.h>
+//#import <OpenEmuSystem/OECloneCD.h>
+//#import <OpenEmuSystem/OEControlDescription.h>
+//#import <OpenEmuSystem/OEControllerDescription.h>
+//#import <OpenEmuSystem/OEDeviceDescription.h>
+//#import <OpenEmuSystem/OEDeviceHandler.h>
+//#import <OpenEmuSystem/OEDeviceManager.h>
+//#import <OpenEmuSystem/OEDreamcastGDI.h>
+//#import <OpenEmuSystem/OEEvent.h>
+//#import <OpenEmuSystem/OEFile.h>
+//#import <OpenEmuSystem/OEHIDEvent.h>
 #import <OpenEmuSystem/OEKeyBindingDescription.h>
-#import <OpenEmuSystem/OEKeyBindingGroupDescription.h>
-#import <OpenEmuSystem/OEPlayerBindings.h>
-#import <OpenEmuSystem/OESystemBindings.h>
+//#import <OpenEmuSystem/OEKeyBindingGroupDescription.h>
+//#import <OpenEmuSystem/OEPlayerBindings.h>
+//#import <OpenEmuSystem/OESystemBindings.h>
 #import <OpenEmuSystem/OESystemController.h>
 #import <OpenEmuSystem/OESystemResponder.h>
