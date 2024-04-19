@@ -24,12 +24,15 @@
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#import <Foundation/Foundation.h>
 
+#if TARGET_OS_OSX
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 #import <ForceFeedback/ForceFeedback.h>
 #import <IOKit/hid/IOHIDLib.h>
 #import <IOKit/hid/IOHIDUsageTables.h>
+#endif
 
 #import <OpenEmuSystem/NSResponder+OEHIDAdditions.h>
 #import <OpenEmuSystem/OEBindingMap.h>

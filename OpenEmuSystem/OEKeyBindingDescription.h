@@ -26,7 +26,6 @@
  */
 
 #import <Foundation/Foundation.h>
-
 #import <OpenEmuSystem/OEBindingDescription.h>
 
 NS_ASSUME_NONNULL_BEGIN

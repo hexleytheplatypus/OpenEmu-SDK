@@ -25,13 +25,14 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Cocoa/Cocoa.h>
+@import Foundation;
+@import OpenEmuBase;
+
 #import "OEBindingsController.h"
 #import "OESystemController.h"
 #import "OEBindingsController_Internal.h"
 #import "OEDeviceManager.h"
 #import "OEDeviceHandler.h"
-#import <OpenEmuBase/OEPropertyList.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

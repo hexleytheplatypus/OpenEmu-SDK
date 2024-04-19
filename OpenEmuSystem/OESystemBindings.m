@@ -24,6 +24,8 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+
 #import "OESystemBindings.h"
 
 #import "OEBindingsController_Internal.h"

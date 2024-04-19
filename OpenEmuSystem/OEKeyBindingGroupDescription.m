@@ -25,6 +25,8 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import Foundation;
+
 #import "OEKeyBindingGroupDescription.h"
 #import "OEBindingDescription_Internal.h"
 

@@ -6,8 +6,9 @@
 //
 //
 
-#import "OEBindingDescription.h"
+@import Foundation;
 
+#import "OEBindingDescription.h"
 #import "OESystemController.h"
 
 NS_ASSUME_NONNULL_BEGIN

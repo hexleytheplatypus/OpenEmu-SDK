@@ -25,12 +25,12 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <OpenEmuBase/OEPropertyList.h>
 #import "OEBindingsController.h"
 #import "OEKeyBindingGroupDescription.h"
 #import "OEKeyBindingDescription.h"
 #import "OESystemBindings.h"
 #import "OEPlayerBindings.h"
-#import <OpenEmuBase/OEPropertyList.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
